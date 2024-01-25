@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;900&display=swap);
+
+@font-face {
+    font-family: BoosterNextFY;
+    src: url(fonts/BoosterNextFY-Bold.woff);
+  }
+
+:root {
+    --twn-font: BoosterNextFY;
+    --twn-textFont: 'Open Sans';
+    --twn-rootFontSize: 16px;
+    --twn-smallFontSize: 0.875rem;
+    --twn-highlightColor: #14cc76;
+    --twn-textColor: #3a3d57;
+    --twn-alternateTextColor: #fff;
+    --twn-secondaryColor: #ff57a2;
+    --twn-backgroundColor: #3a3d57;
+    --twn-linkHoverColor: #03875c;
+    --twn-blockColor: #efefef;
+    --twn-menuWidth: 220px;
+    --twnMaxWidth: 1000px;
+  }
+
+body {
+    margin: 0;
+    font-family: var(--twn-textFont);
+    color: var(--twn-alternateTextColor);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.wrapper > * {
+    max-width: var(--twnMaxWidth);
+    margin-left: auto;
+    margin-right: auto;
+  }

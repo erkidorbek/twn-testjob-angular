@@ -1,0 +1,32 @@
+article {
+    .title {
+        text-align: center;
+        font-size: 2.8125rem;
+    }
+    
+    p {
+        margin: 2.5rem 0;
+    }
+
+    .intro p {
+        font-weight: 600;
+    }
+
+    .article-tags {
+        button {
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            border: none;
+            background-color: var(--twn-secondaryColor);
+            color: white;
+            cursor: pointer;
+            opacity: 0.75;
+            font-weight: 600;
+            font-size: var(--twn-smallFontSize);
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

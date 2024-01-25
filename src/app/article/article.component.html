@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <article>
+        <h1 class="title"> {{ article?.title }} </h1>
+        <div class="intro" [innerHTML]="article?.intro"></div>
+
+        <app-twn-image [image]="article?.image" />
+
+        <div class="article-body" [innerHTML]="article?.body"></div>
+        <div class="article-tags">
+            <button *ngFor="let tag of article?.tags">{{ tag }}</button>
+        </div>
+    </article>
+</div>

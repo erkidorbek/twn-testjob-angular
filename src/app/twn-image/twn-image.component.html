@@ -1,0 +1,6 @@
+<div class="img-backdrop">
+    <div class="blurred-img-backdrop">
+        <div class="blurred-img" [style.backgroundImage]=" 'url(' + image?.small +')' "></div>
+    </div><img [src]="image?.small" [title]="image?.title" [alt]="image?.alt">
+    <div class="img-title"> {{ image?.title }}</div>
+</div>
