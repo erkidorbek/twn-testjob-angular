@@ -9,8 +9,8 @@
   <a class="button logo" routerLink="/">
     <img src="../assets/logo.svg" alt="Site logo">
   </a>
-  <a routerLink="/article" routerLinkActive="active">Artikkel</a>
-  <a routerLink="/table" routerLinkActive="active">Tabel</a>
+  <a routerLink="/article" routerLinkActive="active" (click)="onToggle()">Artikkel</a>
+  <a routerLink="/table" routerLinkActive="active" (click)="onToggle()">Tabel</a>
 </nav>
 
 <main class="main">

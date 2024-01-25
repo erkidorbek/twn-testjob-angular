@@ -1,1 +1,43 @@
-<p>table works!</p>
+<div class="wrapper">
+    <div class="table-wrap">
+        <h1 class="title">Nimekiri</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor="let column of columns"> {{ column.label }}</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <ng-container *ngFor="let tableRow of tableRows">
+                    <tr>
+                        <td> {{ tableRow.firstname }} </td>
+                        <td> {{ tableRow.surname }} </td>
+                        <td> {{ tableRow.sex }} </td>
+                        <td> {{ tableRow.personal_code }} </td>
+                        <td> {{ tableRow.phone }} </td>
+                    </tr>
+                    <tr class="inner-tr">
+                        <td [colSpan]="columns.length">
+                            <div class="table-inner">
+                                <div class="table-image" [style.backgroundImage]=" 'url(' + tableRow.imageUrl +')' ">
+                                </div>
+                                <div>
+                                    <div [innerHTML]="tableRow.intro"></div>
+                                    <div>
+                                        <a [href]="'article/' + tableRow.id">
+                                            <button role="link" class="btn-green">
+                                                Loe rohkem
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+
+            </tbody>
+        </table>
+    </div>
+</div>
