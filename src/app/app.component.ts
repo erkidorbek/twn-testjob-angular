@@ -18,4 +18,9 @@ import { TableComponent } from './table/table.component'
 })
 export class AppComponent {
   title = 'twn-testjob-angular'
+  showToggle = false;
+
+  onToggle() {
+    this.showToggle = !this.showToggle;
+  }
 }

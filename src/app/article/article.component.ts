@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router'
   encapsulation: ViewEncapsulation.None
 })
 export class ArticleComponent {
-  article!: Article;
+  article: Article | undefined;
   errorMessage!: string;
   articleId: string = '972d2b8a';
 

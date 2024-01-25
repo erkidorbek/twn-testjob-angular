@@ -1,8 +1,18 @@
-<nav>
-  <a class="button" routerLink="/article">Artikkel</a>
-  <a class="button" routerLink="/table">Tabel</a>
+<header>
+  <button (click)="onToggle()">Nupp</button>
+  <a href="/" class="logo">
+    <img src="../assets/logo.svg" alt="site logo" title="site logo" />
+  </a>
+</header>
+
+<nav [class.open]="showToggle">
+  <a class="button logo" routerLink="/">
+    <img src="../assets/logo.svg" alt="Site logo">
+  </a>
+  <a routerLink="/article" routerLinkActive="active">Artikkel</a>
+  <a routerLink="/table" routerLinkActive="active">Tabel</a>
 </nav>
 
-<main class="main text-center home">
+<main class="main">
   <router-outlet />
 </main>

@@ -20,12 +20,19 @@
     --twn-blockColor: #efefef;
     --twn-menuWidth: 220px;
     --twnMaxWidth: 1000px;
+    --twn-smallBreakpoint: 961px;
   }
 
 body {
     margin: 0;
     font-family: var(--twn-textFont);
     color: var(--twn-alternateTextColor);
+    font-size: var(--twn-rootFontSize);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--twn-font);
+  text-transform: uppercase;
 }
 
 * {
