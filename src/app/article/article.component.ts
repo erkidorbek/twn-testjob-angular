@@ -3,6 +3,7 @@ import { Article } from '../types/article'
 import { TwnImageComponent } from '../twn-image/twn-image.component'
 import { ArticleService } from '../article.service'
 import { CommonModule } from '@angular/common'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-article',
@@ -13,13 +14,16 @@ import { CommonModule } from '@angular/common'
   encapsulation: ViewEncapsulation.None
 })
 export class ArticleComponent {
-  article: Article | undefined;
+  article!: Article;
   errorMessage!: string;
+  articleId: string = '972d2b8a';
 
-  constructor(private article_service: ArticleService) {}
+  constructor(private article_service: ArticleService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.article_service.getArticle().subscribe({
+    this.articleId = this.route.snapshot.paramMap.get('articleId') || this.articleId;
+
+    this.article_service.getArticle(this.articleId).subscribe({
       next: (article) => {
         this.article = article;
       },

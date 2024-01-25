@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ArticleService {
-  apiUrl = 'https://midaiganes.irw.ee/api/list/KQMXDc0BFJ';
+  apiUrl = 'https://midaiganes.irw.ee/api/list/';
 
   constructor(private http: HttpClient) { }
 
-  getArticle(): Observable<Article> {
-    return this.http.get<Article>(this.apiUrl);
+  getArticle(articleId: string): Observable<Article> {
+    return this.http.get<Article>(this.apiUrl + articleId);
   }
 }
