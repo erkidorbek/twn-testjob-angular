@@ -80,6 +80,7 @@ export class TableComponent {
     this.sortOrder === 'asc' && this.sortByColumn === columnAccessor ? this.sortOrder = 'desc' : this.sortOrder = 'asc';
     this.sortByColumn = columnAccessor;
     this.activePage = 1;
+    this.openTableRow = -1;
 
     this.tableRows = [...this.tableRows].sort((a: any, b: any) => {
       const orderBy = this.sortByColumn;
