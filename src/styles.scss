@@ -2,45 +2,75 @@
 @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;900&display=swap);
 
 @font-face {
-    font-family: BoosterNextFY;
-    src: url(fonts/BoosterNextFY-Bold.woff);
-  }
-
-:root {
-    --twn-font: BoosterNextFY;
-    --twn-textFont: 'Open Sans';
-    --twn-rootFontSize: 16px;
-    --twn-smallFontSize: 0.875rem;
-    --twn-highlightColor: #14cc76;
-    --twn-textColor: #3a3d57;
-    --twn-alternateTextColor: #fff;
-    --twn-secondaryColor: #ff57a2;
-    --twn-backgroundColor: #3a3d57;
-    --twn-linkHoverColor: #03875c;
-    --twn-blockColor: #efefef;
-    --twn-menuWidth: 220px;
-    --twnMaxWidth: 1000px;
-    --twn-smallBreakpoint: 961px;
-  }
-
-body {
-    margin: 0;
-    font-family: var(--twn-textFont);
-    color: var(--twn-alternateTextColor);
-    font-size: var(--twn-rootFontSize);
+  font-family: BoosterNextFY;
+  src: url(fonts/BoosterNextFY-Bold.woff);
 }
 
-h1, h2, h3, h4, h5, h6 {
+:root {
+  --twn-font: BoosterNextFY;
+  --twn-textFont: "Open Sans";
+  --twn-rootFontSize: 16px;
+  --twn-smallFontSize: 0.875rem;
+  --twn-highlightColor: #14cc76;
+  --twn-textColor: #3a3d57;
+  --twn-alternateTextColor: #fff;
+  --twn-secondaryColor: #ff57a2;
+  --twn-backgroundColor: #3a3d57;
+  --twn-linkHoverColor: #03875c;
+  --twn-blockColor: #efefef;
+  --twn-menuWidth: 220px;
+  --twnMaxWidth: 1000px;
+  --twn-smallBreakpoint: 961px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--twn-textFont);
+  color: var(--twn-alternateTextColor);
+  font-size: var(--twn-rootFontSize);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--twn-font);
   text-transform: uppercase;
+  text-align: center;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .wrapper > * {
-    max-width: var(--twnMaxWidth);
-    margin-left: auto;
-    margin-right: auto;
+  max-width: var(--twnMaxWidth);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-green {
+  display: inline-block;
+  margin: 0 0 16px;
+  transition: background-color 0.25s ease-out;
+  font-family: var(--twn-font);
+  font-size: 0.75rem;
+  padding: 0.85em 1.7em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--twn-highlightColor);
+  color: var(--twn-textColor);
+  appearance: none;
+  border: none;
+  text-decoration: none;
+  border-bottom: 0.25rem solid #37945c;
+  text-transform: uppercase;
+  &:hover {
+    background-color: #41e592;
+    color: #3a3d57;
   }
+}
