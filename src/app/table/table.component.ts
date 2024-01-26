@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { TableService } from '../table.service';
 import { TableRow } from '../types/table';
 import { CommonModule } from '@angular/common';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PaginationComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
   
@@ -20,6 +21,7 @@ export class TableComponent {
   activePage: number = 1;
   rowsPerPage: number = 10;
   totalPages = Math.ceil(this.tableRows?.length / this.rowsPerPage);
+  pageOfItems!: TableRow[];
 
   formatIdCodeToDate = (idCode:number) => {
     const code = idCode.toString();
@@ -75,6 +77,11 @@ export class TableComponent {
       format: (value: string) => value.substring(0, 4) + ' ' + value.substring(4),
     },
   ];
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+}
 
   sortBy(columnAccessor: string) {
     this.sortOrder === 'asc' && this.sortByColumn === columnAccessor ? this.sortOrder = 'desc' : this.sortOrder = 'asc';
