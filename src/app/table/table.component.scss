@@ -12,10 +12,9 @@ table {
 
   tr {
     border-bottom: 1px solid white;
-    &.open,
-    &.open:nth-child(4n + 3) {
-      background: #fff;
-      color: var(--twn-textColor);
+    &.open {
+      background: #fff !important;
+      color: var(--twn-textColor) !important;
     }
     &.open + tr {
       display: table-row;

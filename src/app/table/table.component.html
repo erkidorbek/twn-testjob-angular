@@ -4,23 +4,27 @@
         <table>
             <thead>
                 <tr>
-                    <th *ngFor="let column of columns"> {{ column.label }}</th>
+                    <th *ngFor="let column of columns" (click)="column.sortable && sortBy(column.accessor)"
+                        [class]="column.sortable && 'sortable'">
+                        {{ column.label }} {{ column.sortable && sortIcon(column.accessor) }}
+                    </th>
                 </tr>
             </thead>
             <tbody>
 
-                <ng-container *ngFor="let tableRow of tableRows">
-                    <tr>
+                <ng-container *ngFor="let tableRow of tableRows; index as i">
+                    <tr (click)="this.openTableRow === i ? this.openTableRow = -1 : this.openTableRow = i"
+                        [ngClass]="this.openTableRow === i ? 'open' : ''">
                         <td> {{ tableRow.firstname }} </td>
                         <td> {{ tableRow.surname }} </td>
-                        <td> {{ tableRow.sex }} </td>
-                        <td> {{ tableRow.personal_code }} </td>
-                        <td> {{ tableRow.phone }} </td>
+                        <td> {{ tableRow.sex === 'f' ? 'Naine' : 'Mees' }} </td>
+                        <td> {{ formatIdCodeToDate(tableRow.personal_code).toLocaleDateString('uk-Uk') }} </td>
+                        <td> {{ tableRow.phone.substring(0, 4) + ' ' + tableRow.phone.substring(4) }} </td>
                     </tr>
                     <tr class="inner-tr">
                         <td [colSpan]="columns.length">
                             <div class="table-inner">
-                                <div class="table-image" [style.backgroundImage]=" 'url(' + tableRow.imageUrl +')' ">
+                                <div class="table-image" [style.backgroundImage]=" 'url(' + tableRow.image.small +')' ">
                                 </div>
                                 <div>
                                     <div [innerHTML]="tableRow.intro"></div>
@@ -36,6 +40,16 @@
                         </td>
                     </tr>
                 </ng-container>
+
+                <div className="pagination">
+                    <button [disabled]="activePage === 1" (click)="this.activePage = activePage - 1">
+                        Tagasi
+                    </button>
+
+                    <button [disabled]="activePage === totalPages" (click)="this.activePage = activePage + 1">
+                        Edasi
+                    </button>
+                </div>
 
             </tbody>
         </table>
