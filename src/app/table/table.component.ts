@@ -64,20 +64,9 @@ export class TableComponent {
   columns = [
     { accessor: 'firstname', label: 'Eesnimi', sortable: true },
     { accessor: 'surname', label: 'Perenimi', sortable: true },
-    {
-      accessor: 'sex',
-      label: 'Sugu',
-      sortable: true,
-    },
-    {
-      accessor: 'personal_code',
-      label: 'Sünnikuupäev',
-      sortable: true,
-    },
-    {
-      accessor: 'phone',
-      label: 'Telefon',
-    },
+    { accessor: 'sex', label: 'Sugu', sortable: true },
+    { accessor: 'personal_code', label: 'Sünnikuupäev', sortable: true },
+    { accessor: 'phone', label: 'Telefon' },
   ];
 
   onChangePage(pageOfItems: Array<any>) {
