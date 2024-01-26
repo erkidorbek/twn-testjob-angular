@@ -17,10 +17,12 @@ export class ArticleComponent {
   article: Article | undefined;
   errorMessage!: string;
   articleId: string = '972d2b8a';
+  isLoading: boolean = false;
 
-  constructor(private article_service: ArticleService, private route: ActivatedRoute) {}
+  constructor(private article_service: ArticleService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.articleId = this.route.snapshot.paramMap.get('articleId') || this.articleId;
 
     this.article_service.getArticle(this.articleId).subscribe({
@@ -29,6 +31,9 @@ export class ArticleComponent {
       },
       error: (error) => {
         this.errorMessage = error;
+      },
+      complete: () => {
+        this.isLoading = false;
       }
     })
   }

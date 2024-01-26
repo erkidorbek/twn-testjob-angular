@@ -1,5 +1,9 @@
 <div class="wrapper">
-    <div class="table-wrap">
+    <div *ngIf="isLoading" class="loader">
+        <img src="../../assets/loader.svg" alt="Loader">
+    </div>
+
+    <div class="table-wrap" *ngIf="tableRows">
         <h1 class="title">Nimekiri</h1>
         <table>
             <thead>

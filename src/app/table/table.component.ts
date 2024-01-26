@@ -10,7 +10,6 @@ import { PaginationComponent } from '../pagination/pagination.component';
   imports: [CommonModule, PaginationComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
-  
 })
 export class TableComponent {
   tableRows!: TableRow[];
@@ -22,15 +21,16 @@ export class TableComponent {
   rowsPerPage: number = 10;
   totalPages = Math.ceil(this.tableRows?.length / this.rowsPerPage);
   pageOfItems!: TableRow[];
+  isLoading: boolean = false;
 
-  formatIdCodeToDate = (idCode:number) => {
+  formatIdCodeToDate = (idCode: number) => {
     const code = idCode.toString();
     const yearCode = code.substring(0, 1);
     const day = code.substring(5, 7);
     const month = code.substring(3, 5);
     const yearEnd = code.substring(1, 3);
     let yearStart;
-  
+
     switch (yearCode) {
       case '1':
       case '2':
@@ -52,8 +52,16 @@ export class TableComponent {
         yearStart = '19';
         break;
     }
-  
-    return new Date(Number(yearStart + yearEnd), Number(month) - 1, Number(day), 0, 0, 0, 0);
+
+    return new Date(
+      Number(yearStart + yearEnd),
+      Number(month) - 1,
+      Number(day),
+      0,
+      0,
+      0,
+      0
+    );
   };
 
   columns = [
@@ -63,28 +71,26 @@ export class TableComponent {
       accessor: 'sex',
       label: 'Sugu',
       sortable: true,
-      format: (value: "f" | "m") => (value === 'f' ? 'Naine' : 'Mees'),
     },
     {
       accessor: 'personal_code',
       label: 'Sünnikuupäev',
       sortable: true,
-      format: (idCode: number) => this.formatIdCodeToDate(idCode).toLocaleDateString('uk-Uk'),
     },
     {
       accessor: 'phone',
       label: 'Telefon',
-      format: (value: string) => value.substring(0, 4) + ' ' + value.substring(4),
     },
   ];
 
   onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
     this.pageOfItems = pageOfItems;
-}
+  }
 
   sortBy(columnAccessor: string) {
-    this.sortOrder === 'asc' && this.sortByColumn === columnAccessor ? this.sortOrder = 'desc' : this.sortOrder = 'asc';
+    this.sortOrder === 'asc' && this.sortByColumn === columnAccessor
+      ? (this.sortOrder = 'desc')
+      : (this.sortOrder = 'asc');
     this.sortByColumn = columnAccessor;
     this.activePage = 1;
     this.openTableRow = -1;
@@ -115,7 +121,9 @@ export class TableComponent {
       if (order === 'asc') {
         return String(a[orderBy])?.localeCompare(String(b[orderBy]), 'et') || 1;
       } else {
-        return String(b[orderBy])?.localeCompare(String(a[orderBy]), 'et') || -1;
+        return (
+          String(b[orderBy])?.localeCompare(String(a[orderBy]), 'et') || -1
+        );
       }
     });
   }
@@ -127,9 +135,10 @@ export class TableComponent {
     return '⇅';
   }
 
-  constructor(private table_service: TableService) {}
+  constructor(private table_service: TableService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.table_service.getTableData().subscribe({
       next: (tableData) => {
         this.tableRows = tableData.list;
@@ -140,8 +149,8 @@ export class TableComponent {
       complete: () => {
         this.sortOrder = 'desc';
         this.sortBy('firstname');
-      }
-    })
+        this.isLoading = false;
+      },
+    });
   }
-
 }
