@@ -17,9 +17,6 @@ export class TableComponent {
   openTableRow: number = -1;
   sortByColumn: string = 'firstname';
   sortOrder: 'asc' | 'desc' = 'asc';
-  activePage: number = 1;
-  rowsPerPage: number = 10;
-  totalPages = Math.ceil(this.tableRows?.length / this.rowsPerPage);
   pageOfItems!: TableRow[];
   isLoading: boolean = false;
 
@@ -92,7 +89,6 @@ export class TableComponent {
       ? (this.sortOrder = 'desc')
       : (this.sortOrder = 'asc');
     this.sortByColumn = columnAccessor;
-    this.activePage = 1;
     this.openTableRow = -1;
 
     this.tableRows = [...this.tableRows].sort((a: any, b: any) => {
