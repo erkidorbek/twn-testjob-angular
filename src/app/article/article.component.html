@@ -1,17 +1,27 @@
 <div class="wrapper">
-    <div *ngIf="isLoading" class="loader">
+    @if (isLoading) {
+    <div class="loader">
         <img src="../../assets/loader.svg" alt="Loader">
     </div>
+    }
 
-    <article *ngIf="article">
+
+    @if (article) {
+    <article>
         <h1 class="title"> {{ article.title }} </h1>
         <div class="intro" [innerHTML]="article.intro"></div>
 
         <app-twn-image [image]="article.image" />
 
         <div class="article-body" [innerHTML]="article.body"></div>
+
+        @if (article.tags.length) {
         <div class="article-tags">
-            <button *ngFor="let tag of article?.tags">{{ tag }}</button>
+            @for (tag of article.tags; track tag;) {
+            <button>{{ tag }}</button>
+            }
         </div>
+        }
     </article>
+    }
 </div>
