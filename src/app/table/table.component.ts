@@ -3,11 +3,12 @@ import { TableService } from '../table.service';
 import { TableRow } from '../types/table';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { LoaderComponent } from '../loader.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, PaginationComponent],
+  imports: [CommonModule, PaginationComponent, LoaderComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss',
 })

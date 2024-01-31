@@ -1,9 +1,5 @@
 <div class="wrapper">
-    @if (isLoading) {
-    <div class="loader">
-        <img src="../../assets/loader.svg" alt="Loader">
-    </div>
-    }
+    <loader [showLoader]="isLoading" />
 
     @if (tableRows) {
     <div class="table-wrap">
@@ -12,11 +8,10 @@
             <thead>
                 <tr>
                     @for (column of columns; track column.accessor;) {
-                    <th (click)="column.sortable && sortBy(column.accessor)" [class]="column.sortable && 'sortable'">
+                    <th (click)="column.sortable && sortBy(column.accessor)" [class]="{sortable: column.sortable}">
                         {{ column.label }} {{ column.sortable && sortIcon(column.accessor) }}
                     </th>
                     }
-
                 </tr>
             </thead>
             <tbody>
