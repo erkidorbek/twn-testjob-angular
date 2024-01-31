@@ -14,11 +14,17 @@ import { PaginationComponent } from '../pagination/pagination.component';
 export class TableComponent {
   tableRows!: TableRow[];
   errorMessage!: string;
-  openTableRow: number = -1;
+  openTableRow: string = '';
   sortByColumn: string = 'firstname';
   sortOrder: 'asc' | 'desc' = 'asc';
   pageOfItems!: TableRow[];
   isLoading: boolean = false;
+
+  handleSelectedRow(id: string) {
+    this.openTableRow === id
+      ? (this.openTableRow = "")
+      : (this.openTableRow = id);
+  }
 
   formatIdCodeToDate = (idCode: number) => {
     const code = idCode.toString();
@@ -69,7 +75,7 @@ export class TableComponent {
     { accessor: 'phone', label: 'Telefon' },
   ];
 
-  onChangePage(pageOfItems: Array<any>) {
+  onChangePage(pageOfItems: Array<TableRow>) {
     this.pageOfItems = pageOfItems;
   }
 
@@ -78,7 +84,7 @@ export class TableComponent {
       ? (this.sortOrder = 'desc')
       : (this.sortOrder = 'asc');
     this.sortByColumn = columnAccessor;
-    this.openTableRow = -1;
+    this.openTableRow = '';
 
     this.tableRows = [...this.tableRows].sort((a: any, b: any) => {
       const orderBy = this.sortByColumn;

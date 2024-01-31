@@ -8,16 +8,18 @@
         <table>
             <thead>
                 <tr>
-                    <th *ngFor="let column of columns" (click)="column.sortable && sortBy(column.accessor)"
-                        [class]="column.sortable && 'sortable'">
+                    @for (column of columns; track column.accessor;) {
+                    <th (click)="column.sortable && sortBy(column.accessor)" [class]="column.sortable && 'sortable'">
                         {{ column.label }} {{ column.sortable && sortIcon(column.accessor) }}
                     </th>
+                    }
+
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let tableRow of pageOfItems; index as i">
-                    <tr (click)="this.openTableRow === i ? this.openTableRow = -1 : this.openTableRow = i"
-                        [ngClass]="this.openTableRow === i ? 'open' : ''">
+                @for (tableRow of pageOfItems; track tableRow.id;) {
+                <ng-container>
+                    <tr (click)="handleSelectedRow(tableRow.id)" [class]="{open: this.openTableRow === tableRow.id}">
                         <td> {{ tableRow.firstname }} </td>
                         <td> {{ tableRow.surname }} </td>
                         <td> {{ tableRow.sex === 'f' ? 'Naine' : 'Mees' }} </td>
@@ -43,6 +45,7 @@
                         </td>
                     </tr>
                 </ng-container>
+                }
             </tbody>
         </table>
 
