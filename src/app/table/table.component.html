@@ -1,9 +1,12 @@
 <div class="wrapper">
-    <div *ngIf="isLoading" class="loader">
+    @if (isLoading) {
+    <div class="loader">
         <img src="../../assets/loader.svg" alt="Loader">
     </div>
+    }
 
-    <div class="table-wrap" *ngIf="tableRows">
+    @if (tableRows) {
+    <div class="table-wrap">
         <h1 class="title">Nimekiri</h1>
         <table>
             <thead>
@@ -51,4 +54,5 @@
 
         <pagination [items]="tableRows" (changePage)="onChangePage($event)"></pagination>
     </div>
+    }
 </div>
