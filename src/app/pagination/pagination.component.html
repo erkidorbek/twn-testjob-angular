@@ -1,5 +1,6 @@
 <div class="pager">
-    <ul *ngIf="pager && pager.pages?.length" class="pagination justify-content-center">
+    @if (pager && pager.pages.length) {
+    <ul class="pagination justify-content-center">
         <li [ngClass]="{ disabled: pager.currentPage === 1 }" class="page-item">
             <a (click)="setPage(pager.currentPage - 1)" class="page-link">Prev</a>
         </li>
@@ -10,4 +11,5 @@
             <a (click)="setPage(pager.currentPage + 1)" class="page-link">Next</a>
         </li>
     </ul>
+    }
 </div>
