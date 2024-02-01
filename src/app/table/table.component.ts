@@ -4,7 +4,6 @@ import { TableRow } from '../types/table';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination/pagination.component';
 import { LoaderComponent } from '../shared/loader.component';
-import { PhonePipe } from '../shared/phone.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 @Component({
