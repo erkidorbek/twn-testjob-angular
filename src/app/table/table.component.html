@@ -21,7 +21,7 @@
                         <td> {{ tableRow.firstname }} </td>
                         <td> {{ tableRow.surname }} </td>
                         <td> {{ tableRow.sex === 'f' ? 'Naine' : 'Mees' }} </td>
-                        <td> {{ formatIdCodeToDate(tableRow.personal_code).toLocaleDateString('uk-Uk') }} </td>
+                        <td> {{ formatIdCodeToDate(tableRow.personal_code) | date:'dd.MM.yyyy' }} </td>
                         <td> {{ tableRow.phone.substring(0, 4) + ' ' + tableRow.phone.substring(4) }} </td>
                     </tr>
                     <tr class="inner-tr">

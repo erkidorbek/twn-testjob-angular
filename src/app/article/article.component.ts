@@ -4,7 +4,7 @@ import { TwnImageComponent } from '../twn-image/twn-image.component'
 import { ArticleService } from '../article.service'
 import { CommonModule } from '@angular/common'
 import { ActivatedRoute } from '@angular/router'
-import { LoaderComponent } from '../loader.component'
+import { LoaderComponent } from '../shared/loader.component'
 
 @Component({
   selector: 'app-article',

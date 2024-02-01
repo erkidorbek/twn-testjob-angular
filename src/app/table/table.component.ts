@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { TableService } from '../table.service';
 import { TableRow } from '../types/table';
 import { CommonModule } from '@angular/common';
-import { PaginationComponent } from '../pagination/pagination.component';
-import { LoaderComponent } from '../loader.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { LoaderComponent } from '../shared/loader.component';
 
 @Component({
   selector: 'app-table',
@@ -60,11 +60,7 @@ export class TableComponent {
     return new Date(
       Number(yearStart + yearEnd),
       Number(month) - 1,
-      Number(day),
-      0,
-      0,
-      0,
-      0
+      Number(day)
     );
   };
 
